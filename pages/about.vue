@@ -6,9 +6,9 @@
           <div class="col-md-12">
             <img src="background.jpg" class="w-100 pb-4" alt="About Image">
             <h4 class="font-weight-400 pb-5">
-              Po Rith has been drawing for a really long time. Most recently, he's really gotten into portraits, watercolors. 
+              Po Rith has been drawing for a really long time. Recently though, he's gotten into portraits and watercolors. 
               <br><br>
-              Follow him on Instagram, or send him a <nuxt-link to="contact">message</nuxt-link>.
+              Follow him on <a href="https://instagram.com/jpoechill">Instagram</a>, or send him a <nuxt-link to="contact">message</nuxt-link>.
             </h4>
           </div>
         </div>

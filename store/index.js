@@ -1,9 +1,18 @@
 export const state = () => ({
   portraits: [
+      {
+        title: 'Simone',
+        name: 'simone',
+        description: 'This is portrait of Simone, from /r/redditgetsdrawn.',
+        finished: 'May 2019',
+        thumbnail: '/thumbnails/simone.png',
+        hires: '/portraits/simone.jpg',
+        url: '/artwork/simone'
+      },
     {
         title: 'Ramon',
         name: 'ramon',
-        description: 'This is portrait drawing for Ramon, who emigrated here from Algeria. This portrait was requested and commissioned by his wife.',
+        description: 'This is portrait of Ramon, who emigrated here from Algeria. This portrait was requested and commissioned by his wife.',
         finished: 'Jan 2019',
         thumbnail: '/thumbnails/ramon.png',
         hires: '/portraits/ramon.jpg',
@@ -28,13 +37,13 @@ export const state = () => ({
         url: '/artwork/deya'
     },
     {
-        title: 'Mary',
-        name: 'mary',
-        description: 'Mary is a figure model at a local drawing group in Berkeley, CA.',
+        title: 'Meredith',
+        name: 'meredith',
+        description: 'Meredith is a figure model at a local drawing group in Berkeley, CA.',
         finished: 'May 2018',
-        thumbnail: '/thumbnails/mary.png',
-        hires: '/portraits/mary.jpg',
-        url: '/artwork/mary'
+        thumbnail: '/thumbnails/meredith.png',
+        hires: '/portraits/meredith.jpg',
+        url: '/artwork/meredith'
     },
     {
         title: 'Neo',
