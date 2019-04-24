@@ -4,7 +4,7 @@ export const state = () => ({
         title: 'Simone',
         name: 'simone',
         description: 'This is portrait of Simone, from /r/redditgetsdrawn.',
-        finished: 'May 2019',
+        finished: 'Apr 2019',
         thumbnail: '/thumbnails/simone.png',
         hires: '/portraits/simone.jpg',
         url: '/artwork/simone'

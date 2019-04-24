@@ -85,7 +85,7 @@ a:hover {
 }
 
 .word-spacing {
-  word-spacing: 2px;
+  word-spacing: 8px;
 }
 
 .fade-enter-active, .fade-leave-active {
