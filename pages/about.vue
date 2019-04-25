@@ -5,7 +5,7 @@
         <div class="row pt-1">
           <div class="col-md-12">
             <transition name="fade" appear>
-              <img src="background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image" :onLoad="isLoaded = true">
+              <img src="background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image" :onLoad="onLoadHandler()">
             </transition>
             <div v-show="!isLoaded" class="panel mb-4 bg-custom text-center">
               <span class="font-custom">PR</span>
@@ -38,11 +38,7 @@ export default {
   },
   methods: {
     onLoadHandler (data) {
-      if (this.ttlImages === this.portraits.length) {
-        this.isLoaded = true
-      } else {
-        this.ttlImages++
-      }
+      this.isLoaded = true
     }
   },
   transition: {
