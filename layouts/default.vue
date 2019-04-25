@@ -8,7 +8,7 @@
             <img src="~static/logo.png" class="logo" alt="PR Logo">
           </nuxt-link>
         </div>
-        <div class="col-md-6 text-right font-weight-600 word-spacing">
+        <div class="col-md-6 d-flex justify-content-end align-items-center font-weight-600 word-spacing">
           <h4>
             <nuxt-link to="/about">about</nuxt-link>
             <nuxt-link to="/">portraits</nuxt-link>
