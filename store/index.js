@@ -12,7 +12,7 @@ export const state = () => ({
     {
         title: 'Ramon',
         name: 'ramon',
-        description: 'This is portrait of Ramon, who emigrated here from Algeria. This portrait was requested and commissioned by his wife.',
+        description: 'This is portrait of Ramon, who emigrated here from Algeria. A portrait done by special request.',
         finished: 'Jan 2019',
         thumbnail: '/thumbnails/ramon.png',
         hires: '/portraits/ramon.jpg',

@@ -1,10 +1,11 @@
 <template>
   <div class="fadein-custom">
-    <div class="container">
+    <!-- Start Desktop -->
+    <div class="container d-none d-md-block">
       <div class="row font-weight-bold mt-4 mb-4 pt-3">
         <div class="col-md-6">
           <nuxt-link to="/">
-            <img src="~static/logo-lrg.png" class="logo" alt="PR Logo">
+            <img src="~static/logo.png" class="logo" alt="PR Logo">
           </nuxt-link>
         </div>
         <div class="col-md-6 text-right font-weight-600 word-spacing">
@@ -16,6 +17,24 @@
         </div>
       </div>
     </div>
+    <!-- Start Mobile -->
+    <div class="container d-md-none">
+      <div class="row font-weight-bold mt-1 mb-2 pt-3">
+        <div class="col-md-6 text-center">
+          <nuxt-link to="/">
+            <img src="~static/logo.png" class="w-25 logo mb-3" alt="PR Logo">
+          </nuxt-link>
+        </div>
+        <div class="col-md-6 text-center font-weight-600 word-spacing">
+          <h4>
+            <nuxt-link to="/about">about</nuxt-link>
+            <nuxt-link to="/">portraits</nuxt-link>
+            <nuxt-link to="/contact">contact</nuxt-link>
+          </h4>
+        </div>
+      </div>
+    </div>
+
     <!-- Start Nuxt Body -->
     <nuxt />
     <!-- End Nuxt Body -->
@@ -26,7 +45,7 @@
 export default {
   data: function () {
     return {
-      isActive: false
+      isActive: true
     }
   },
   mounted: function () {
@@ -41,8 +60,8 @@ export default {
 
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto,  Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;

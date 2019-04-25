@@ -6,14 +6,16 @@
           <img :src="currPortrait.hires" class="w-100" alt="Portrait Image">
         </div>
         <div class="col-md-4">
-        <h4 class="font-weight-600">{{ currPortrait.title }}</h4> 
+        <div class="mh-custom">
+          <h4 class="font-weight-600">{{ currPortrait.title }}</h4> 
+          <h4 class="font-weight-400">
+            {{ currPortrait.description }} <br>
+          </h4>
+          <h4 class="font-weight-400 text-right">
+            {{ currPortrait.finished }} <br><br>
+          </h4>
+        </div>
         <h4 class="font-weight-400">
-          {{ currPortrait.description }} <br><br>
-        </h4>
-        <h4 class="font-weight-400">
-          {{ currPortrait.finished }} <br><br>
-        </h4><h4 class="font-weight-400">
-          <!-- <hr> -->
           <nuxt-link to="" @click.native.prevent="goPrev()">Prev</nuxt-link> | 
           <nuxt-link to="" @click.native.prevent="goNext()">Next</nuxt-link>
         </h4>
@@ -22,7 +24,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-12 text-right">
+        <div class="col-md-12 mb-3 text-right">
           <h4>© 2019</h4>
         </div>
       </div>
@@ -102,5 +104,9 @@ export default {
 
 .fake-link:hover {
   cursor: pointer;
+}
+
+.mh-custom {
+  min-height: 240px;
 }
 </style>
