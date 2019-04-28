@@ -1,6 +1,22 @@
 export const state = () => ({
   portraits: [
-      {
+    {
+        // title: 'Redditgetsdrawn',
+        // name: 'u/littlebluefleur',
+        // description: 'This is portrait of /u/littlebluefleur, from /r/redditgetsdrawn.',
+        // finished: 'Apr 2019',
+        // thumbnail: '/thumbnails/ulittlebluefleur.png',
+        // hires: '/portraits/simone.jpg',
+        // url: '/artwork/ulittlebluefleur'
+        title: 'Redditgetsdrawn',
+        name: 'ulittlebluefleur',
+        description: 'This is portrait of u/littlebluefleur, from /r/redditgetsdrawn.',
+        finished: 'Apr 2019',
+        thumbnail: '/thumbnails/ulittlebluefleur.png',
+        hires: '/portraits/ulittlebluefleur.jpg',
+        url: '/artwork/ulittlebluefleur'
+    },
+    {
         title: 'Simone',
         name: 'simone',
         description: 'This is portrait of Simone, from /r/redditgetsdrawn.',
@@ -8,7 +24,7 @@ export const state = () => ({
         thumbnail: '/thumbnails/simone.png',
         hires: '/portraits/simone.jpg',
         url: '/artwork/simone'
-      },
+    },
     {
         title: 'Ramon',
         name: 'ramon',
