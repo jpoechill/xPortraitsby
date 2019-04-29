@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="container">
-      <div class="row pt-1">
-        <transition name="fade" appear>
-          <div v-for="portrait in portraits" :key="portrait.name" v-show="isLoaded" class="col-md-4 mb-2 pb-4">
-            <nuxt-link :to="portrait.url">
-              <img @load="onLoadHandler" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
-            </nuxt-link>
-          </div>
-        </transition>
-        <div v-for="n in 6" v-show="!isLoaded" :key="n" class="col-md-4 mb-2 pb-4">
+      <transition-group name="fade" tag="div" class="row pt-1" v-show="isLoaded" appear>
+        <div v-for="portrait in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
+          <nuxt-link :to="portrait.url">
+            <img @load="onLoadHandler" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+          </nuxt-link>
+        </div>
+      </transition-group>
+      <div class="row pt-1" v-show="!isLoaded">
+        <div v-for="n in 6" :key="n" class="col-md-4 mb-2 pb-4">
           <div class="panel bg-custom text-center">
             <span class="font-custom">PR</span>
           </div>

@@ -4,7 +4,7 @@
       <div class="row pt-1 pb-4">
         <div  class="col-md-8 pb-3">
           <transition name="fade" appear>
-            <img :onLoad="loadHandler()" :src="currPortrait.hires" v-show="isLoaded" class="w-100" alt="Portrait Image">
+            <img :load="loadHandler()" :src="currPortrait.hires" v-show="isLoaded" class="w-100" alt="Portrait Image">
           </transition>
           <div v-show="!isLoaded" class="panel w-100 bg-custom text-center">
             <span class="font-custom">PR</span>
@@ -107,9 +107,7 @@ export default {
       return currIndex
     },
     loadHandler () {
-      let self = this 
-
-      self.isLoaded = true
+      this.isLoaded = true
     }
   },
   transition: {
