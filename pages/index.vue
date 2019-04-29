@@ -3,14 +3,14 @@
     <transition name="fade" appear>
       <div class="container">
         <div class="row pt-1">
-          <div v-for="portrait in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
+          <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
               <nuxt-link :to="portrait.url">
-                <img @load="onLoadHandler" v-show="isLoaded" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+                <transition name="fade" appear>
+                  <img @load="onLoadHandler" v-show="ttlImages >= index" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+                </transition>
               </nuxt-link>
           </div>
         </div>
-      </div>
-      <div class="container">
         <div class="row" v-show="isLoaded">
           <div class="col-md-12 mb-3 text-right">
             <h4>© 2019</h4>
