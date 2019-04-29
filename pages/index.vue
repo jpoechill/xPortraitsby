@@ -5,7 +5,7 @@
         <div v-for="portrait in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
           <nuxt-link :to="portrait.url">
             <transition name="fade" appear>
-              <img :src="portrait.thumbnail" v-show="isLoaded" class="w-100" alt="Portrait Tumbnail" :onLoad="onLoadHandler()">
+              <img @load="onLoadHandler()" :src="portrait.thumbnail" v-show="isLoaded" class="w-100" alt="Portrait Tumbnail">
             </transition>
           </nuxt-link>
         </div>
