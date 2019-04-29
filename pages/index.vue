@@ -6,7 +6,7 @@
           <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
               <nuxt-link :to="portrait.url">
                 <transition name="fade" appear>
-                  <img @load="onLoadHandler(index)" v-show="index <= indexHasBeenLoaded" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+                  <img @load="onLoadHandler(index)" v-show="index <= readyIndex" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
                 </transition>
               </nuxt-link>
           </div>
@@ -29,8 +29,10 @@ export default {
     return {
       allLoaded: false,
       indexHasBeenLoaded: 0,
+      readyIndex: 0,
       loaded: [],
-      ttlLoaded: 0
+      ttlLoaded: 0,
+      waitingToLoad: []
     }
   },
   computed: mapState([
@@ -43,11 +45,28 @@ export default {
     onLoadHandler (index) {
       // console.log(index)
 
-      console.log(index + ' : ' + this.indexHasBeenLoaded)
+      console.log(index + ' : ' + this.readyIndex)
 
-      if (index === this.indexHasBeenLoaded) {
-        this.indexHasBeenLoaded++
-      } 
+      if (index === this.readyIndex) {
+        this.readyIndex++
+      } else {
+        this.waitingToLoad.push(index)
+      }
+
+      if (this.waitingToLoad.includes(this.readyIndex)) {
+        this.readyIndex++
+        this.waitingToLoad.splice(this.waitingToLoad.indexOf(this.index), 1)
+      }
+
+
+
+      // let currIndexLoaded = this.indexHasBeenLoaded
+
+      // if (!currIndex === this.indexHasBeenLoaded) {
+      //   this.indexHasBeenLoaded++
+      // } else {
+      //   this.waitingToLoad.push(index)
+      // }
 
       // this.ttlLoaded++
 
