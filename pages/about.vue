@@ -5,7 +5,7 @@
         <div class="row mt-1">
           <div class="col-md-12">
             <transition name="fade" appear>
-              <img :onLoad="onLoadHandler()" ref="myImg" src="/background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image">
+              <img @load="onLoadHandler" ref="myImg" src="/background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image">
             </transition>
             <div v-show="!isLoaded" class="panel mb-4 bg-custom text-center">
               <span class="font-custom">PR</span>
@@ -35,13 +35,6 @@ export default {
     return {
       background: '',
       isLoaded: false,
-    }
-  },
-  directives: {
-    loadedifcomplete: function(el, binding) {
-       if (el.complete) {
-         binding.value.loaded = true;
-       }
     }
   },
   beforeMount() {

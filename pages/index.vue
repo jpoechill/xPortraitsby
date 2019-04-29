@@ -2,10 +2,10 @@
   <div>
     <div class="container">
       <div class="row pt-1">
-        <div v-for="portrait in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
+        <div v-for="portrait in portraits" :key="portrait.name" v-show="isLoaded" class="col-md-4 mb-2 pb-4">
           <nuxt-link :to="portrait.url">
             <transition name="fade" appear>
-              <img :onLoad="onLoadHandler()" :src="portrait.thumbnail" v-show="isLoaded" class="w-100" alt="Portrait Tumbnail">
+              <img @load="onLoadHandler" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
             </transition>
           </nuxt-link>
         </div>
@@ -44,12 +44,12 @@ export default {
   },
   methods: {
     onLoadHandler (data) {
-      console.log(this.ttlImages + ' : ' + this.portraits.length)
-      if (this.ttlImages === this.portraits.length && this.portraits.length !== 0) {
+      console.log(this.ttlImages + ' : ' + (this.portraits.length-1))
+      if (this.ttlImages === (this.portraits.length-1) && this.portraits.length !== 0) {
         this.isLoaded = true
+        console.log('Complete')
       } else {
         this.ttlImages++
-        this.isLoaded = false
       }
     }
   },
