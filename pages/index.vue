@@ -40,7 +40,7 @@ export default {
     'portraits'
   ]),
   created () {
-    this.ttlImages = 0
+
   },
   methods: {
     onLoadHandler (index) {
@@ -56,7 +56,7 @@ export default {
         this.readyIndex++
       }
 
-      // console.log(index + ' : ' + this.readyIndex)
+      console.log(index + ' : ' + this.readyIndex)
 
       // if (this.waitingToLoad.includes(this.readyIndex)) {
       //   this.readyIndex++
