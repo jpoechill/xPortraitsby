@@ -6,7 +6,7 @@
           <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
               <nuxt-link :to="portrait.url">
                 <transition name="fade" appear>
-                  <img @load="onLoadHandler(index)" v-show="ttlImages >= index" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+                  <img @load="onLoadHandler(index)" v-show="index <= indexHasBeenLoaded" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
                 </transition>
               </nuxt-link>
           </div>
@@ -28,7 +28,9 @@ export default {
   data: function () {
     return {
       allLoaded: false,
-      ttlImages: 0
+      indexHasBeenLoaded: 0,
+      loaded: [],
+      ttlLoaded: 0
     }
   },
   computed: mapState([
@@ -38,15 +40,34 @@ export default {
     this.ttlImages = 0
   },
   methods: {
-    onLoadHandler (data) {
-      // console.log('123')
-      console.log(this.ttlImages + ' : ' + (this.portraits.length-1))
-      if (this.ttlImages === (this.portraits.length-1) && this.portraits.length !== 0) {
-        this.allLoaded = true
-      } else {
-        this.ttlImages++
-        this.allLoaded = false
-      }
+    onLoadHandler (index) {
+      // console.log(index)
+
+      console.log(index + ' : ' + this.indexHasBeenLoaded)
+
+      if (index <= this.indexHasBeenLoaded) {
+        this.indexHasBeenLoaded++
+      } 
+
+      // this.ttlLoaded++
+
+      // currLoaded = 
+
+      // load imgs in order (async)
+
+      // ex:
+      // load order 1,4,3,2,6,7,5
+
+      // load 1
+      // load 4, wait for 2
+
+      // console.log(this.ttlImages + ' : ' + (this.portraits.length-1))
+      // if (this.ttlImages === (this.portraits.length-1) && this.portraits.length !== 0) {
+      //   this.allLoaded = true
+      // } else {
+      //   this.ttlImages++
+      //   this.allLoaded = false
+      // }
     }
   },
   transition: {
