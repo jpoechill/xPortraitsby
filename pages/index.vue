@@ -3,11 +3,11 @@
     <div class="container">
       <div class="row pt-1">
         <div v-for="portrait in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
-          <div v-show="isLoaded">
-            <nuxt-link :to="portrait.url">
-              <img :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail" :onLoad="onLoadHandler()">
-            </nuxt-link>
-          </div>
+          <nuxt-link :to="portrait.url">
+            <transition name="fade" appear>
+              <img :src="portrait.thumbnail" v-show="isLoaded" class="w-100" alt="Portrait Tumbnail" :onLoad="onLoadHandler()">
+            </transition>
+          </nuxt-link>
         </div>
         <div v-for="n in 6" v-show="!isLoaded" :key="n" class="col-md-4 mb-2 pb-4">
           <div class="panel bg-custom text-center">
