@@ -1,13 +1,15 @@
 <template>
   <div>
     <div class="container">
-      <transition-group name="fade" tag="div" class="row pt-1" v-show="isLoaded" appear>
+      <div class="row pt-1">
         <div v-for="portrait in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
+          <transition name="fade" v-show="isLoaded" appear>
           <nuxt-link :to="portrait.url">
             <img @load="onLoadHandler" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
           </nuxt-link>
+          </transition>
         </div>
-      </transition-group>
+      </div>
     </div>
     <div class="container">
       <div class="row">
