@@ -44,63 +44,19 @@ export default {
   },
   methods: {
     onLoadHandler (index) {
-      // console.log(index)
-
-      // ready to load = index
-      // index waiting to load = 0
-
       this.readyToLoad.push(index)
 
-      if (this.readyToLoad.includes(this.readyIndex)) {
+      while (this.readyToLoad.includes(this.readyIndex)) {
         this.readyToLoad.splice(this.readyToLoad.indexOf(this.readyIndex), 1)
         this.readyIndex++
       }
 
+      // if (this.readyToLoad.includes(this.readyIndex)) {
+      //   this.readyToLoad.splice(this.readyToLoad.indexOf(this.readyIndex), 1)
+      //   this.readyIndex++
+      // }
+
       console.log(index + ' : ' + this.readyIndex)
-
-      // if (this.waitingToLoad.includes(this.readyIndex)) {
-      //   this.readyIndex++
-
-      //   this.waitingToLoad.splice(this.waitingToLoad.indexOf(this.index), 1)
-      // } else if (index === this.readyIndex) {
-      //   this.readyIndex++
-      // } else {
-      //   this.waitingToLoad.push(index)
-      // }
-
-
-      // console.log(this.waitingToLoad.length)
-      // if (this.waitingToLoad.length) {
-      //   console.log(this.waitingToLoad[0])
-      // }
-
-      // let currIndexLoaded = this.indexHasBeenLoaded
-
-      // if (!currIndex === this.indexHasBeenLoaded) {
-      //   this.indexHasBeenLoaded++
-      // } else {
-      //   this.waitingToLoad.push(index)
-      // }
-
-      // this.ttlLoaded++
-
-      // currLoaded = 
-
-      // load imgs in order (async)
-
-      // ex:
-      // load order 1,4,3,2,6,7,5
-
-      // load 1
-      // load 4, wait for 2
-
-      // console.log(this.ttlImages + ' : ' + (this.portraits.length-1))
-      // if (this.ttlImages === (this.portraits.length-1) && this.portraits.length !== 0) {
-      //   this.allLoaded = true
-      // } else {
-      //   this.ttlImages++
-      //   this.allLoaded = false
-      // }
     }
   },
   transition: {
