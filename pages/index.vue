@@ -6,12 +6,12 @@
           <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
               <nuxt-link :to="portrait.url">
                 <transition name="fade" appear>
-                  <img @load="onLoadHandler" v-show="ttlImages >= index" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+                  <img @load="onLoadHandler(index)" v-show="ttlImages >= index" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
                 </transition>
               </nuxt-link>
           </div>
         </div>
-        <div class="row" v-show="isLoaded">
+        <div class="row">
           <div class="col-md-12 mb-3 text-right">
             <h4>© 2019</h4>
           </div>
@@ -27,7 +27,7 @@ import { mapState } from 'vuex'
 export default {
   data: function () {
     return {
-      isLoaded: false,
+      allLoaded: false,
       ttlImages: 0
     }
   },
@@ -42,11 +42,10 @@ export default {
       // console.log('123')
       console.log(this.ttlImages + ' : ' + (this.portraits.length-1))
       if (this.ttlImages === (this.portraits.length-1) && this.portraits.length !== 0) {
-        this.isLoaded = true
-        console.log('Complete')
+        this.allLoaded = true
       } else {
         this.ttlImages++
-        this.isLoaded = false
+        this.allLoaded = false
       }
     }
   },
