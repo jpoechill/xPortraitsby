@@ -45,7 +45,7 @@ export default {
 
       console.log(index + ' : ' + this.indexHasBeenLoaded)
 
-      if (index <= this.indexHasBeenLoaded) {
+      if (index === this.indexHasBeenLoaded) {
         this.indexHasBeenLoaded++
       } 
 
