@@ -1,15 +1,10 @@
 <template>
   <div>
-    <div class="container">
-      <transition name="fade" appear>
-        <div class="row mt-1">
+    <transition name="fade" appear>
+      <div class="container">
+        <div class="row mt-1" v-show="isLoaded" >
           <div class="col-md-12">
-            <transition name="fade" appear>
-              <img @load="onLoadHandler" ref="myImg" src="/background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image">
-            </transition>
-            <div v-show="!isLoaded" class="panel mb-4 bg-custom text-center">
-              <span class="font-custom">PR</span>
-            </div>
+            <img @load="onLoadHandler" ref="myImg" src="/background.jpg" class="w-100 pb-4" alt="About Image">
             <h4 class="font-weight-400 pb-5">
               Po Rith has been drawing for a really long time. Recently though, he's gotten into portraits and watercolors. 
               <br><br>
@@ -17,15 +12,13 @@
             </h4>
           </div>
         </div>
-      </transition>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 mb-3 text-right">
-          <h4>© 2019</h4>
+        <div class="row">
+          <div class="col-md-12 mb-3 text-right">
+            <h4>© 2019</h4>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
