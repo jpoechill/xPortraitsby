@@ -40,10 +40,10 @@ export default {
   methods: {
     onLoadHandler (data) {
       // console.log('123')
-      // console.log(this.ttlImages + ' : ' + (this.portraits.length-1))
+      console.log(this.ttlImages + ' : ' + (this.portraits.length-1))
       if (this.ttlImages === (this.portraits.length-1) && this.portraits.length !== 0) {
         this.isLoaded = true
-        // console.log('Complete')
+        console.log('Complete')
       } else {
         this.ttlImages++
         this.isLoaded = false
