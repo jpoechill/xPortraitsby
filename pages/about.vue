@@ -5,7 +5,7 @@
         <div class="row mt-1">
           <div class="col-md-12">
             <transition name="fade" appear>
-              <img @load="onLoadHandler()" src="/background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image">
+              <img :onLoad="onLoadHandler()" src="/background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image">
             </transition>
             <div v-show="!isLoaded" class="panel mb-4 bg-custom text-center">
               <span class="font-custom">PR</span>
