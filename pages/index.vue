@@ -8,13 +8,13 @@
           </nuxt-link>
         </div>
       </transition-group>
-      <!-- <div class="row pt-1" v-show="!isLoaded">
+      <div class="row pt-1" v-show="!isLoaded">
         <div v-for="n in 6" :key="n" class="col-md-4 mb-2 pb-4">
           <div class="panel bg-custom text-center">
             <span class="font-custom">PR</span>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
     <div class="container">
       <div class="row">

@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row pt-1 pb-4">
         <div  class="col-md-8 pb-3">
-          <transition name="fade" v-show="isLoaded" appear>
-            <img :load="loadHandler" :src="currPortrait.hires" class="w-100" alt="Portrait Image">
+          <transition name="fade" appear>
+            <img :load="loadHandler" v-show="isLoaded" :src="currPortrait.hires" class="w-100" alt="Portrait Image">
           </transition>
           <div v-show="!isLoaded" class="panel w-100 bg-custom text-center">
             <span class="font-custom">PR</span>
@@ -63,15 +63,10 @@ export default {
       'portraits'
     ])
   },
-  created() {
-    this.isLoaded = false
-  },
   methods: {
     goPrev: function () {
       let portraits = this.portraits
       let index = this.findIndex(this.$route.params.model)
-
-      this.isLoaded = false
 
       if (index === 0) {
         index = (portraits.length-1)
@@ -84,8 +79,6 @@ export default {
     goNext: function () {
       let portraits = this.portraits
       let index = this.findIndex(this.$route.params.model)
-
-      this.isLoaded = false
 
       if (index < (portraits.length-1)) {
         index++
