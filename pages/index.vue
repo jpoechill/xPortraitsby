@@ -42,6 +42,7 @@ export default {
   methods: {
     onLoadHandler (data) {
       if (this.ttlImages === this.portraits.length) {
+        console.log('All loaded')
         this.isLoaded = true
       } else {
         this.ttlImages++
