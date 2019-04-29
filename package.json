@@ -11,9 +11,9 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.3.4",
-    "@nuxtjs/axios": "^5.3.6"
+    "nuxt": "^2.3.4"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

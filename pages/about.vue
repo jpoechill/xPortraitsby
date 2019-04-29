@@ -2,10 +2,10 @@
   <div>
     <div class="container">
       <transition name="fade" appear>
-        <div class="row pt-1">
+        <div class="row mt-1">
           <div class="col-md-12">
             <transition name="fade" appear>
-              <img src="~static/background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image" :onLoad="onLoadHandler()">
+              <img src="/background.jpg" v-show="isLoaded" class="w-100 pb-4" alt="About Image" @load="onLoadHandler()">
             </transition>
             <div v-show="!isLoaded" class="panel mb-4 bg-custom text-center">
               <span class="font-custom">PR</span>
@@ -33,6 +33,7 @@
 export default {
   data: function () {
     return {
+      background: '',
       isLoaded: false,
     }
   },
@@ -52,7 +53,7 @@ export default {
 .panel {
   display: flex;
   min-height: 460px;
-  height: 100%;
+  /* height: 100%; */
   justify-content: center;
   align-items: center;
 }
