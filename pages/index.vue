@@ -32,7 +32,8 @@ export default {
       readyIndex: 0,
       loaded: [],
       ttlLoaded: 0,
-      waitingToLoad: []
+      waitingToLoad: [],
+      readyToLoad: []
     }
   },
   computed: mapState([
@@ -45,16 +46,27 @@ export default {
     onLoadHandler (index) {
       // console.log(index)
 
-      console.log(index + ' : ' + this.readyIndex)
+      // ready to load = index
+      // index waiting to load = 0
 
-      if (this.waitingToLoad.includes(this.readyIndex)) {
+      this.readyToLoad.push(index)
+
+      if (this.readyToLoad.includes(this.readyIndex)) {
+        this.readyToLoad.splice(this.readyToLoad.indexOf(this.readyIndex), 1)
         this.readyIndex++
-        this.waitingToLoad.splice(this.waitingToLoad.indexOf(this.index), 1)
-      } else if (index === this.readyIndex) {
-        this.readyIndex++
-      } else {
-        this.waitingToLoad.push(index)
       }
+
+      // console.log(index + ' : ' + this.readyIndex)
+
+      // if (this.waitingToLoad.includes(this.readyIndex)) {
+      //   this.readyIndex++
+
+      //   this.waitingToLoad.splice(this.waitingToLoad.indexOf(this.index), 1)
+      // } else if (index === this.readyIndex) {
+      //   this.readyIndex++
+      // } else {
+      //   this.waitingToLoad.push(index)
+      // }
 
 
       // console.log(this.waitingToLoad.length)
