@@ -71,6 +71,8 @@ export default {
       let portraits = this.portraits
       let index = this.findIndex(this.$route.params.model)
 
+      this.isLoaded = false
+
       if (index === 0) {
         index = (portraits.length-1)
       } else {
@@ -83,6 +85,8 @@ export default {
       let portraits = this.portraits
       let index = this.findIndex(this.$route.params.model)
 
+      this.isLoaded = false
+      
       if (index < (portraits.length-1)) {
         index++
       } else {
@@ -107,9 +111,9 @@ export default {
       // this.isLoaded = true
       let self = this 
 
-      setTimeout(function () {
+      // setTimeout(function () {
         self.isLoaded = true
-      }, 500)
+      // }, 500)
     }
   },
   transition: {
