@@ -1,23 +1,26 @@
 <template>
   <div>
     <div class="container">
-      <!-- <transition name="fade" appear> -->
-        <div class="row mt-1">
-          <div class="col-md-12">
-            <transition name="fade" appear>
-              <img :src="background" class="w-100 pb-4" alt="About Image" @load="onLoadHandler()">
-            </transition>
-            <!-- <div v-show="!isLoaded" class="panel mb-4 bg-custom text-center">
-              <span class="font-custom">PR</span>
-            </div> -->
-            <h4 class="font-weight-400 pb-5">
-              Po Rith has been drawing for a really long time. Recently though, he's gotten into portraits and watercolors. 
-              <br><br>
-              You can follow him on <a href="https://instagram.com/jpoechill">Instagram</a>, or send him a <nuxt-link to="contact">message</nuxt-link>.
-            </h4>
-          </div>
+      <div class="row pt-1 pb-4">
+        <div class="col-md-8 pb-3">
+          <img :src="currPortrait.hires" class="w-100" alt="Portrait Image" >
         </div>
-      <!-- </transition> -->
+        <div class="col-md-4">
+        <div class="mh-custom">
+          <h4 class="font-weight-600">{{ currPortrait.title }}</h4> 
+          <h4 class="font-weight-400">
+            {{ currPortrait.description }} <br>
+          </h4>
+          <h4 class="font-weight-400 text-right">
+            {{ currPortrait.finished }} <br><br>
+          </h4>
+        </div>
+        <h4 class="font-weight-400">
+          <nuxt-link to="" @click.native.prevent="goPrev()">Prev</nuxt-link> | 
+          <nuxt-link to="" @click.native.prevent="goNext()">Next</nuxt-link>
+        </h4>
+        </div>
+      </div>
     </div>
     <div class="container">
       <div class="row">
@@ -28,25 +31,63 @@
     </div>
   </div>
 </template>
-
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  data: function () {
-    return {
-      background: '',
-      isLoaded: false,
-    }
-  },
-  created() {
-    this.loadImg()
+  computed: {
+    currPortrait () {
+      let self = this
+      let hello = 123
+      let model = this.$route.params.model
+
+      let arr = this.portraits
+
+      let selected = arr.find(function(item){
+        return item.name === model
+      })
+
+      return selected
+    },
+    ...mapState([
+      'portraits'
+    ])
   },
   methods: {
-    loadImg() {
-      this.isLoaded = false
-      this.background = '/background.jpg'
+    goPrev: function () {
+      let portraits = this.portraits
+      let index = this.findIndex(this.$route.params.model)
+
+      if (index === 0) {
+        index = (portraits.length-1)
+      } else {
+        index--
+      }
+
+      this.$router.push(portraits[index].url)
     },
-    onLoadHandler (data) {
-      this.isLoaded = true
+    goNext: function () {
+      let portraits = this.portraits
+      let index = this.findIndex(this.$route.params.model)
+
+      if (index < (portraits.length-1)) {
+        index++
+      } else {
+        index = 0
+      }
+
+      this.$router.push(portraits[index].url)
+    },
+    findIndex: function (model) {
+      let currIndex
+
+      this.portraits.forEach(function(item, index){
+        if (item.name === model) {
+          currIndex = index
+        }
+      })
+
+      return currIndex
     }
   },
   transition: {
@@ -57,43 +98,15 @@ export default {
 </script>
 
 <style>
-.panel {
-  display: flex;
-  min-height: 460px;
-  /* height: 100%; */
-  justify-content: center;
-  align-items: center;
-}
-
-.font-custom {
-  color: #FFF;
+.fake-link {
   font-weight: 600;
-  font-size: 200px;
-  font-family: 'Helvetica Neue';
 }
 
-.bg-custom {
-  background: linear-gradient(312deg, #ffffff, #EEE);
-  background-size: 400% 400%;
-
-  -webkit-animation: AnimationName 3s ease infinite;
-  -moz-animation: AnimationName 3s ease infinite;
-  animation: AnimationName 3s ease infinite;
+.fake-link:hover {
+  cursor: pointer;
 }
 
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 51%}
-    100%{background-position:0% 50%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 51%}
-    100%{background-position:0% 50%}
-}
-@keyframes AnimationName { 
-    0%{background-position:0% 50%}
-    50%{background-position:100% 51%}
-    100%{background-position:0% 50%}
+.mh-custom {
+  min-height: 240px;
 }
 </style>
