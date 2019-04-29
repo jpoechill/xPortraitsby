@@ -2,13 +2,13 @@
   <div>
     <div class="container">
       <div class="row pt-1">
-        <div v-for="portrait in portraits" :key="portrait.name" v-show="isLoaded" class="col-md-4 mb-2 pb-4">
-          <nuxt-link :to="portrait.url">
-            <transition name="fade" appear>
+        <transition name="fade" appear>
+          <div v-for="portrait in portraits" :key="portrait.name" v-show="isLoaded" class="col-md-4 mb-2 pb-4">
+            <nuxt-link :to="portrait.url">
               <img @load="onLoadHandler" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
-            </transition>
-          </nuxt-link>
-        </div>
+            </nuxt-link>
+          </div>
+        </transition>
         <div v-for="n in 6" v-show="!isLoaded" :key="n" class="col-md-4 mb-2 pb-4">
           <div class="panel bg-custom text-center">
             <span class="font-custom">PR</span>
