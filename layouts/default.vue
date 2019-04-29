@@ -48,9 +48,6 @@ export default {
       isActive: true
     }
   },
-  mounted: function () {
-    console.log('Re-mounted')
-  },
   transition: {
     appear: true,
     name: 'fade'

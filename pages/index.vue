@@ -2,10 +2,10 @@
   <div>
     <div class="container">
       <div class="row pt-1">
-        <div v-for="portrait in portraits" v-show="isLoaded" :key="portrait.name" class="col-md-4 mb-2 pb-4">
-          <div>
+        <div v-for="portrait in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
+          <div v-show="isLoaded">
             <nuxt-link :to="portrait.url">
-              <img :src="portrait.thumbnail" v-cloak class="w-100" alt="Portrait Tumbnail" :onLoad="onLoadHandler()">
+              <img :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail" :onLoad="onLoadHandler()">
             </nuxt-link>
           </div>
         </div>
@@ -39,13 +39,17 @@ export default {
   computed: mapState([
     'portraits'
   ]),
+  created () {
+    this.ttlImages = 0
+  },
   methods: {
     onLoadHandler (data) {
-      if (this.ttlImages === this.portraits.length) {
-        console.log('All loaded')
+      console.log(this.ttlImages + ' : ' + this.portraits.length)
+      if (this.ttlImages === this.portraits.length && this.portraits.length !== 0) {
         this.isLoaded = true
       } else {
         this.ttlImages++
+        this.isLoaded = false
       }
     }
   },
