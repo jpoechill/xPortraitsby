@@ -47,18 +47,20 @@ export default {
 
       console.log(index + ' : ' + this.readyIndex)
 
-      if (index === this.readyIndex) {
+      if (this.waitingToLoad.includes(this.readyIndex)) {
+        this.readyIndex++
+        this.waitingToLoad.splice(this.waitingToLoad.indexOf(this.index), 1)
+      } else if (index === this.readyIndex) {
         this.readyIndex++
       } else {
         this.waitingToLoad.push(index)
       }
 
-      if (this.waitingToLoad.includes(this.readyIndex)) {
-        this.readyIndex++
-        this.waitingToLoad.splice(this.waitingToLoad.indexOf(this.index), 1)
-      }
 
-
+      // console.log(this.waitingToLoad.length)
+      // if (this.waitingToLoad.length) {
+      //   console.log(this.waitingToLoad[0])
+      // }
 
       // let currIndexLoaded = this.indexHasBeenLoaded
 
