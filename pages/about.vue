@@ -1,8 +1,8 @@
 <template>
   <div>
     <transition name="fade" appear>
-      <div class="container">
-        <div class="row mt-1" v-show="isLoaded" >
+      <div class="container" v-show="isLoaded">
+        <div class="row mt-1">
           <div class="col-md-12">
             <img @load="onLoadHandler" ref="myImg" src="/background.jpg" class="w-100 pb-4" alt="About Image">
             <h4 class="font-weight-400 pb-5">
