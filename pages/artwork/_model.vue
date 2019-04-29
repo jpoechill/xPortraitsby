@@ -2,13 +2,10 @@
   <div>
     <div class="container">
       <div class="row pt-1 pb-4">
-        <div  class="col-md-8 pb-3">
+        <div  class="col-md-8 panel pb-3">
           <transition name="fade" appear>
             <img @load="loadHandler" v-show="isLoaded" :src="currPortrait.hires" class="w-100" alt="Portrait Image">
           </transition>
-          <div v-show="!isLoaded" class="panel w-100 bg-custom text-center">
-            <span class="font-custom">PR</span>
-          </div>
         </div>
         <div class="col-md-4">
         <div class="mh-custom">
@@ -111,12 +108,6 @@ export default {
 </script>
 
 <style scoped>
-.panel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @media only screen and (min-width : 768px) {
   .panel {
     min-height: 600px;
