@@ -3,7 +3,9 @@
     <div class="container">
       <div class="row pt-1 pb-4">
         <div  class="col-md-8 pb-3">
-          <img :src="currPortrait.hires" v-show="isLoaded" class="w-100" alt="Portrait Image" :load="loadHandler()">
+          <transition name="fade" appear>
+            <img :src="currPortrait.hires" v-show="isLoaded" class="w-100" alt="Portrait Image" :load="loadHandler()">
+          </transition>
           <div v-show="!isLoaded" class="panel w-100 bg-custom text-center">
             <span class="font-custom">PR</span>
           </div>
@@ -101,8 +103,13 @@ export default {
       return currIndex
     },
     loadHandler () {
-      console.log('Loaded')
-      this.isLoaded = true
+      // console.log('Loaded')
+      // this.isLoaded = true
+      let self = this 
+
+      setTimeout(function () {
+        self.isLoaded = true
+      }, 500)
     }
   },
   transition: {
@@ -115,10 +122,26 @@ export default {
 <style scoped>
 .panel {
   display: flex;
-  min-height: 400px;
-  /* height: 100%; */
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (min-width : 768px) {
+  .panel {
+    min-height: 600px;
+  }
+}
+
+@media only screen and (min-width : 992px) {
+  .panel {
+    min-height: 700px;
+  }
+}
+
+@media only screen and (min-width : 1200px) {
+  .panel {
+    min-height: 800px;
+  }
 }
 
 .font-custom {
