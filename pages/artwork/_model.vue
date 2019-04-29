@@ -2,8 +2,11 @@
   <div>
     <div class="container">
       <div class="row pt-1 pb-4">
-        <div class="col-md-8 pb-3">
-          <img :src="currPortrait.hires" class="w-100" alt="Portrait Image">
+        <div  class="col-md-8 pb-3">
+          <img :src="currPortrait.hires" v-show="isLoaded" class="w-100" alt="Portrait Image" :load="loadHandler()">
+          <div v-show="!isLoaded" class="panel w-100 bg-custom text-center">
+            <span class="font-custom">PR</span>
+          </div>
         </div>
         <div class="col-md-4">
         <div class="mh-custom">
@@ -35,6 +38,11 @@
 import { mapState } from 'vuex'
 
 export default {
+  data () { 
+    return {
+      isLoaded: false
+    }
+  },
   computed: {
     currPortrait () {
       let self = this
@@ -52,6 +60,9 @@ export default {
     ...mapState([
       'portraits'
     ])
+  },
+  created() {
+    this.isLoaded = false
   },
   methods: {
     goPrev: function () {
@@ -88,6 +99,10 @@ export default {
       })
 
       return currIndex
+    },
+    loadHandler () {
+      console.log('Loaded')
+      this.isLoaded = true
     }
   },
   transition: {
@@ -97,7 +112,47 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.panel {
+  display: flex;
+  min-height: 400px;
+  /* height: 100%; */
+  justify-content: center;
+  align-items: center;
+}
+
+.font-custom {
+  color: #FFF;
+  font-weight: 600;
+  font-size: 200px;
+  font-family: 'Helvetica Neue';
+}
+
+.bg-custom {
+  background: linear-gradient(312deg, #ffffff, #EEE);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 51%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 51%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 51%}
+    100%{background-position:0% 50%}
+}
+
 .fake-link {
   font-weight: 600;
 }
