@@ -1,6 +1,5 @@
 const pkg = require('./package')
 
-
 module.exports = {
   mode: 'universal',
 
@@ -54,6 +53,19 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  generate: {
+    routes: [
+      '/artwork/ulittlebluefleur',
+      '/artwork/simone',
+      '/artwork/ramon',
+      '/artwork/keosha',
+      '/artwork/deya',
+      '/artwork/meredith',
+      '/artwork/neo',
+      '/artwork/abigail',
+    ]
   },
 
   /*
