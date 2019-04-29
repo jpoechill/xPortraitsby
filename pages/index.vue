@@ -3,11 +3,11 @@
     <div class="container">
       <div class="row pt-1">
         <div v-for="portrait in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
-          <transition name="fade" appear>
             <nuxt-link :to="portrait.url">
-              <img @load="onLoadHandler" v-show="isLoaded" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+              <transition name="fade" appear>
+                <img @load="onLoadHandler" v-show="isLoaded" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+              </transition>
             </nuxt-link>
-          </transition>
         </div>
       </div>
     </div>
