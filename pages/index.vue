@@ -16,7 +16,7 @@
               </nuxt-link>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-show="readyIndex === (portraits.length - 1)">
           <div class="col-md-12 mb-3 text-right">
             <h4>© 2019</h4>
           </div>
