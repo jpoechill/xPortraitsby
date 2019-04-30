@@ -4,7 +4,7 @@
       <div class="container" v-show="isLoaded">
         <div class="row mt-1">
           <div class="col-md-12">
-            <img @load="onLoadHandler" ref="myImg" src="/background.jpg" class="w-100 pb-4" alt="About Image">
+            <img @load="onLoadHandler('asd')" ref="myImg" src="/background.jpg" class="w-100 pb-4" alt="About Image">
             <h4 class="font-weight-400 pb-5">
               Po Rith has been drawing for a really long time. Recently though, he's gotten into portraits and watercolors. 
               <br><br>
@@ -38,6 +38,7 @@ export default {
   },
   methods: {
     onLoadHandler (data) {
+      console.log(data)
       this.isLoaded = true
     }
   },
