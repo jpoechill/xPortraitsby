@@ -4,7 +4,12 @@
       <div class="container" v-show="isLoaded">
         <div class="row mt-1">
           <div class="col-md-12">
-            <img @load="onLoadHandler('asd')" ref="myImg" src="/background.jpg" class="w-100 pb-4" alt="About Image">
+            <div class="position-relative mb-4">
+              <div class="overlay w-100 h-100 position-absolute"></div>
+              <div>
+                <img @load="onLoadHandler('asd')" ref="myImg" src="/background.jpg" class="w-100" alt="About Image">
+              </div>
+            </div>
             <h4 class="font-weight-400 pb-5">
               Po Rith has been drawing for a really long time. Recently though, he's gotten into portraits and watercolors. 
               <br><br>
@@ -49,13 +54,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .panel {
   display: flex;
   min-height: 460px;
   /* height: 100%; */
   justify-content: center;
   align-items: center;
+}
+
+.overlay {
+  background-color: #333;
+  opacity: .1;
 }
 
 .font-custom {

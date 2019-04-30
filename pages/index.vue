@@ -8,12 +8,17 @@
           </div>
         </div> -->
         <div class="row pt-1">
-          <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
-              <nuxt-link :to="portrait.url">
-                <transition name="fade" appear>
-                  <img @load="onLoadHandler(index)" v-show="index < readyIndex" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
-                </transition>
-              </nuxt-link>
+          <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-4 pb-2">
+            <nuxt-link :to="portrait.url">
+              <transition name="fade" appear>
+                <div class="position-relative" v-show="index < readyIndex">
+                  <div class="position-absolute w-100 h-100 overlay"></div>
+                  <div>
+                    <img @load="onLoadHandler(index)" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+                  </div>
+                </div>
+              </transition>
+            </nuxt-link>
           </div>
         </div>
         <div class="row" v-show="readyIndex === (portraits.length - 1)">
@@ -65,9 +70,11 @@ export default {
       //   this.readyIndex++
       // }
 
-      console.log(index + ' : ' + this.readyIndex)
+      // console.log(index + ' : ' + this.readyIndex)
     },
     loadNext () {
+      this.readyIndex++
+      this.readyIndex++
       this.readyIndex++
     }
   },
@@ -78,9 +85,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .panel {
   min-height: 360px;
+}
+
+.overlay {
+  background-color: #333;
+  opacity: .1;
+  transition: 0.3s;
+}
+
+.overlay:hover {
+  opacity: 0;
 }
 
 .font-custom {

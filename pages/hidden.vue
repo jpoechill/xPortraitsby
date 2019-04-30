@@ -2,16 +2,26 @@
   <div>
     <!-- <transition name="fade" appear> -->
       <div class="container">
+        <!-- <div class="row">
+          <div class="col-md-12">
+            <button @click="loadNext">Load next</button>
+          </div>
+        </div> -->
         <div class="row pt-1">
           <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
               <nuxt-link :to="portrait.url">
-                <transition name="fade" appear>
-                  <img @load="onLoadHandler(index)" v-show="index <= readyIndex" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
-                </transition>
+                <div class="position-relative">
+                  <div class="position-absolute w-100 h-100 overlay">
+                    123
+                  </div>
+                  <transition name="fade" appear>
+                    <img @load="onLoadHandler(index)" v-show="index < readyIndex" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
+                  </transition>
+                </div>
               </nuxt-link>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-show="readyIndex === (portraits.length - 1)">
           <div class="col-md-12 mb-3 text-right">
             <h4>© 2019</h4>
           </div>
@@ -39,24 +49,31 @@ export default {
   computed: mapState([
     'portraits'
   ]),
-  created () {
+  mounted () {
+    let self = this
 
+    let curr = 0
+
+    this.portraits.forEach(function () {
+      curr += 500
+      setTimeout(function () {
+        self.loadNext()
+      }, curr)
+    })
   },
   methods: {
     onLoadHandler (index) {
-      this.readyToLoad.push(index)
+      // this.readyToLoad.push(index)
 
-      while (this.readyToLoad.includes(this.readyIndex)) {
-        this.readyToLoad.splice(this.readyToLoad.indexOf(this.readyIndex), 1)
-        this.readyIndex++
-      }
-
-      // if (this.readyToLoad.includes(this.readyIndex)) {
+      // while (this.readyToLoad.includes(this.readyIndex)) {
       //   this.readyToLoad.splice(this.readyToLoad.indexOf(this.readyIndex), 1)
       //   this.readyIndex++
       // }
 
       console.log(index + ' : ' + this.readyIndex)
+    },
+    loadNext () {
+      this.readyIndex++
     }
   },
   transition: {
@@ -66,9 +83,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .panel {
   min-height: 360px;
+}
+
+.overlay {
+  background-color: #333;
+  opacity: .3;
+  transition: 0.3s;
+}
+
+.overlay:hover {
+  opacity: 0;
 }
 
 .font-custom {

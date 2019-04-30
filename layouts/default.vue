@@ -2,7 +2,7 @@
   <div class="fadein-custom">
     <!-- Start Desktop -->
     <div class="container d-none d-md-block">
-      <div class="row font-weight-bold mt-4 mb-4 pt-3">
+      <div class="row font-weight-bold mt-2 mb-4 pt-3">
         <div class="col-md-6">
           <nuxt-link to="/">
             <img src="~static/logo.png" class="logo" alt="PR Logo">
