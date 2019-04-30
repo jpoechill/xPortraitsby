@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition name="fade" appear>
+    <!-- <transition name="fade" appear> -->
       <div class="container">
         <div class="row pt-1">
           <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 
