@@ -1,33 +1,26 @@
 <template>
   <div>
-    <!-- <transition name="fade" appear> -->
-      <div class="container">
-        <!-- <div class="row">
-          <div class="col-md-12">
-            <button @click="loadNext">Load next</button>
-          </div>
-        </div> -->
-        <div class="row pt-1">
-          <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-4 pb-2">
-            <nuxt-link :to="portrait.url">
-              <transition name="fade" appear>
-                <div class="position-relative" v-show="index < readyIndex">
-                  <div class="position-absolute w-100 h-100 overlay"></div>
-                  <div>
-                    <img @load="onLoadHandler(index)" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
-                  </div>
+    <div class="container">
+      <div class="row pt-1">
+        <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-4 pb-2">
+          <nuxt-link :to="portrait.url">
+            <transition name="fade" appear>
+              <div class="position-relative" v-show="index < readyIndex">
+                <div class="position-absolute w-100 h-100 overlay"></div>
+                <div>
+                  <img @load="onLoadHandler(index)" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
                 </div>
-              </transition>
-            </nuxt-link>
-          </div>
-        </div>
-        <div class="row" v-show="readyIndex === (portraits.length - 1)">
-          <div class="col-md-12 mb-3 text-right">
-            <h4>© 2019</h4>
-          </div>
+              </div>
+            </transition>
+          </nuxt-link>
         </div>
       </div>
-    <!-- </transition> -->
+      <div class="row" v-show="readyIndex >= (portraits.length)">
+        <div class="col-md-12 mb-3 text-right">
+          <h4>© 2019</h4>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
