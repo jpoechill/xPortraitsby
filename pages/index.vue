@@ -4,11 +4,11 @@
       <div class="container">
         <div class="row pt-1">
           <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-4 mb-2 pb-4">
-              <nuxt-link :to="portrait.url">
+              <!-- <nuxt-link :to="portrait.url"> -->
                 <transition name="fade" appear>
                   <img @load="onLoadHandler(index)" v-show="index <= readyIndex" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
                 </transition>
-              </nuxt-link>
+              <!-- </nuxt-link> -->
           </div>
         </div>
         <div class="row">
