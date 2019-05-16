@@ -11,7 +11,9 @@
         <div class="col-md-6 d-flex justify-content-end align-items-center font-weight-600 word-spacing">
           <h4>
             <nuxt-link to="/about">about</nuxt-link>
-            <nuxt-link to="/">portraits</nuxt-link>
+            <nuxt-link to="/">showcase</nuxt-link>
+            <nuxt-link to="/portraits">portraits</nuxt-link>
+            <nuxt-link to="/sketchbook">sketchbook</nuxt-link>
             <nuxt-link to="/contact">contact</nuxt-link>
           </h4>
         </div>

@@ -7,13 +7,13 @@
             <div class="position-relative mb-4">
               <div class="overlay w-100 h-100 position-absolute"></div>
               <div>
-                <img @load="onLoadHandler('asd')" ref="myImg" src="/background.jpg" class="w-100" alt="About Image">
+                <img @load="onLoadHandler('asd')" ref="myImg" src="/background-02.jpg" class="w-100" alt="About Image">
               </div>
             </div>
             <h4 class="font-weight-400 pb-5">
               Po Rith has been drawing for a really long time. Recently though, he's gotten into portraits and watercolors. 
               <br><br>
-              You can follow him on <a href="https://instagram.com/jpoechill">Instagram</a>, or send him a <nuxt-link to="contact">message</nuxt-link>.
+              Follow him on <a href="https://instagram.com/jpoechill">Instagram</a>, or send him a <nuxt-link to="contact">message</nuxt-link>.
             </h4>
           </div>
         </div>

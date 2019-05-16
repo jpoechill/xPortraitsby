@@ -2,20 +2,18 @@
   <div>
     <div class="container">
       <div class="row pt-1">
-        <div v-for="(portrait, index) in showcase" :key="portrait.name" class="col-md-4 mb-4 pb-2">
-          <nuxt-link :to="portrait.url">
-            <transition name="fade" appear>
-              <div class="position-relative" v-show="index < readyIndex">
-                <div class="position-absolute w-100 h-100 overlay"></div>
-                <div>
-                  <img @load="onLoadHandler(index)" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
-                </div>
+        <div v-for="(portrait, index) in sketchbook" :key="index" class="col-md-3 mb-4 pb-2">
+          <transition name="fade" appear>
+            <div class="position-relative" v-show="index < readyIndex">
+              <div class="position-absolute w-100 h-100 overlay"></div>
+              <div>
+                <img @load="onLoadHandler(index)" :src="portrait.thumbnail" class="w-100" alt="Portrait Tumbnail">
               </div>
-            </transition>
-          </nuxt-link>
+            </div>
+          </transition>
         </div>
       </div>
-      <div class="row" v-show="readyIndex >= (showcase.length)">
+      <div class="row" v-show="readyIndex >= (sketchbook.length)">
         <div class="col-md-12 mb-3 text-right">
           <h4>© 2019</h4>
         </div>
@@ -40,14 +38,14 @@ export default {
     }
   },
   computed: mapState([
-    'showcase'
+    'sketchbook'
   ]),
   mounted () {
     let self = this
 
     let curr = 0
 
-    this.showcase.forEach(function () {
+    this.sketchbook.forEach(function () {
       curr += 500
       setTimeout(function () {
         self.loadNext()
@@ -91,6 +89,7 @@ export default {
 
 .overlay:hover {
   opacity: 0;
+  cursor: crosshair;
 }
 
 .font-custom {

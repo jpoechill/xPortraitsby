@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="row pt-1">
-        <div v-for="(portrait, index) in showcase" :key="portrait.name" class="col-md-4 mb-4 pb-2">
+        <div v-for="(portrait, index) in portraits" :key="portrait.name" class="col-md-3 mb-4 pb-2">
           <nuxt-link :to="portrait.url">
             <transition name="fade" appear>
               <div class="position-relative" v-show="index < readyIndex">
@@ -15,7 +15,7 @@
           </nuxt-link>
         </div>
       </div>
-      <div class="row" v-show="readyIndex >= (showcase.length)">
+      <div class="row" v-show="readyIndex >= (portraits.length)">
         <div class="col-md-12 mb-3 text-right">
           <h4>© 2019</h4>
         </div>
@@ -40,14 +40,14 @@ export default {
     }
   },
   computed: mapState([
-    'showcase'
+    'portraits'
   ]),
   mounted () {
     let self = this
 
     let curr = 0
 
-    this.showcase.forEach(function () {
+    this.portraits.forEach(function () {
       curr += 500
       setTimeout(function () {
         self.loadNext()
